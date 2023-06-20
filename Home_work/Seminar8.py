@@ -39,21 +39,26 @@ def find_contact(file_name):
 def del_contact(file_name):
     os.system('cls')
     list_1 = []
-    d1 = ''
-    mystr = ''
+    deletingElement = ''
+    stringForWriteInFile = ''
     user_del = input('what delete? _').title()
+
     with open(file_name, 'r') as data:
         for item in data:
             list_1.append(item)
+     # все вычитали из файла в список list_1
         for i in range(len(list_1) - 1):
             if user_del in list_1[i]:
-                d1 = list_1.pop(i)
-            mystr = mystr + list_1[i]
-        res = input(f'You whant delete the entry {d1} y/n ...')
-        if res == 'y' or res == 'Y':
-            with open(file_name, 'w') as data:
-                data.write(mystr)
+                deletingElement = list_1.pop(i)
+            stringForWriteInFile = stringForWriteInFile + list_1[i]
+    # Удалили из list_1 что пользователь написал и все записали в строку  stringForWriteInFile
 
+        res = input(f'You whant delete the entry {deletingElement} y/n ...')
+        if res == 'y' or res == 'Y':
+    # спросили у пользователя точно хочешь удалить
+            with open(file_name, 'w') as data:
+                data.write(stringForWriteInFile)
+    #строку записали в файл режим перезаписи
 
 # ----------------------------------------------------------
 
